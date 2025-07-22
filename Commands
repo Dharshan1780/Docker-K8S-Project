@@ -1,0 +1,6 @@
+kubectl expose service <SERVICE_NAME> --type=<TYPE> --port=<PORT> --target-port=<TARGET_PORT> --name=<NEW_SERVICE_NAME> -n <NAMESPACE>
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+            OUTPUT - service/prometheus-server-ext exposed
+" This command creates a new Kubernetes service that exposes an existing service (prometheus-server) externally via a NodePort, allowing access from outside the cluster "
+
+#######################################################################################################################################################################################
