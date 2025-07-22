@@ -1,0 +1,18 @@
+kubectl expose service <SERVICE_NAME> --type=<TYPE> --port=<PORT> --target-port=<TARGET_PORT> --name=<NEW_SERVICE_NAME> -n <NAMESPACE>
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
+            OUTPUT - service/prometheus-server-ext exposed
+" This command creates a new Kubernetes service that exposes an existing service (prometheus-server) externally via a NodePort, allowing access from outside the cluster "
+
+#######################################################################################################################################################################################
+
+This command adds the Prometheus Helm chart repository to your local Helm setup.
+" helm repo add prometheus-community https://prometheus-community.github.io/helm-charts "
+" helm repo update "
+" helm install prometheus prometheus-community/prometheus --namespace monitoring "
+" kubectl create namespace monitoring "
+" kubectl get pods -n monitoring "
+            OUTPUT -    prometheus-server-xxxxxxxx   1/1   Running
+                        prometheus-kube-state-metrics-xxxxx  1/1  Running
+" kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext -n monitoring "
+" minikube service prometheus-server-ext -n monitoring "
+
